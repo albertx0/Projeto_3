@@ -1,0 +1,7 @@
+# ninja log v5
+2	116	7213519469404828	CMakeFiles/untitled4.dir/main.c.obj	d838bd1625d7b0d8
+15	120	7213519469444715	CMakeFiles/untitled4.dir/biblioteca.c.obj	5e30b77764a60bbc
+120	276	7213519470996297	untitled4.exe	e7113a275cf9d579
+3	109	7213522082973260	CMakeFiles/untitled4.dir/main.c.obj	e2ce615f5043b8d3
+18	124	7213522083122864	CMakeFiles/untitled4.dir/biblioteca.c.obj	7afd607512137be8
+124	254	7213522084415112	untitled4.exe	e7113a275cf9d579
