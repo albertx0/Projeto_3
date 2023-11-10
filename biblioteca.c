@@ -72,9 +72,9 @@ Tarefas_armazem *cadastrarTarefa(Tarefas_armazem *Lista_Tarefas) {
 
 void listar_tarefas(Tarefas_armazem *lista) {
 
-    // Realiza a verificação se a lista esta vazia
 
-    if (lista->Tamanho == 0) {
+
+    if (lista->Tamanho == 0) { // Realiza a verificação se a lista esta vazia
         printf("\n====================\n");
         printf("Lista de tarefas vazia....\n");
         printf("====================\n");
@@ -93,7 +93,7 @@ void listar_tarefas(Tarefas_armazem *lista) {
     }
 }
 
-Tarefas_armazem *deletarTarefa(Tarefas_armazem *lista) {
+Tarefas_armazem *deletarTarefa(Tarefas_armazem* lista) {
 
     // Realiza a verificacao se a lista esta vazia
 
@@ -103,15 +103,11 @@ Tarefas_armazem *deletarTarefa(Tarefas_armazem *lista) {
         printf("====================\n");
         return lista;
     } else {
-        Tarefas_armazem *lista_temp = (Tarefas_armazem *)malloc(
-                100 * sizeof(Tarefas_armazem)); // Criacao de um array de struct de
-        // struct temporario
+        Tarefas_armazem *lista_temp = (Tarefas_armazem *)malloc(100 * sizeof(Tarefas_armazem)); // Criacao de um array temporario
 
-        listar_tarefas(lista); // Lista todas as tarefas para o usuario escolher
-        // qual deseja deletar
+        listar_tarefas(lista); // Lista todas as tarefas para o usuario escolher qual deseja deletar
 
-        int tamanho = lista->Tamanho; // Declara a variavel tamanho para guardar o
-        // tamanho atual da struct
+        int tamanho = lista->Tamanho; // Declara a variavel tamanho para guardar o tamanho atual da struct
 
         int indice;
 
@@ -121,25 +117,21 @@ Tarefas_armazem *deletarTarefa(Tarefas_armazem *lista) {
 
         int cont = 0;
 
-        for (int i = 0; i < tamanho;
-             i++) { // For que realiza a iteracao ate o tamanho da lista e caso o
-            // "i" seja igual ao "indice" o programa nao adiciona na lista
-            // temporaria
+        for (int i = 0; i < tamanho; i++) { // For que realiza a iteracao ate o tamanho da lista e caso o "i" seja igual ao "indice" o programa nao adiciona na lista temporaria
             if (i != indice - 1) {
                 lista_temp->tarefas[cont].prioridade = lista->tarefas[i].prioridade;
-                strcpy(lista_temp->tarefas[cont].categoria,
-                       lista->tarefas[i].categoria);
-                strcpy(lista_temp->tarefas[cont].descricao,
-                       lista->tarefas[i].descricao);
+                strcpy(lista_temp->tarefas[cont].categoria,lista->tarefas[i].categoria);
+                strcpy(lista_temp->tarefas[cont].descricao,lista->tarefas[i].descricao);
+                strcpy(lista_temp->tarefas[cont].Estado,lista->tarefas[i].Estado);
                 cont++;
             }
         }
 
         lista_temp->Tamanho = lista->Tamanho - 1; // Subtraindo 1 ao valor atual da lista
-        return lista_temp; // Retorna a nova lista com a tarefa que o usuario
-        // desejou excluida
+        return lista_temp; // Retorna a nova lista com a tarefa que o usuario desejou excluida
     }
 }
+
 
 void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas){
     int Prioridade_Escolha;
@@ -168,3 +160,4 @@ void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas){
 
     printf("\n====================\n");
 }
+

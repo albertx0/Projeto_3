@@ -18,9 +18,9 @@ int main() {
             lista_tarefas = cadastrarTarefa(
                     lista_tarefas); // Chama a funcao para cadastrar uma tarefa
         } else if (opcao == 2) {
-            listar_tarefas(lista_tarefas); // Chama a funcao para mostrar na tela do
-            // usuario todas as tarefas
+            listar_tarefas(lista_tarefas); // Chama a funcao para mostrar na tela do usuario todas as tarefas
         } else if (opcao == 3) {
+
             lista_tarefas =
                     deletarTarefa(lista_tarefas); // Chama a funcao para listar todas as tarefas ja criadas pelo usuario
         }else if(opcao == 6){
@@ -34,5 +34,6 @@ int main() {
     }
 
     escreve(lista_tarefas , "lista");
+
     return 0;
 }
