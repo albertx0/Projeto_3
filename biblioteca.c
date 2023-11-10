@@ -6,7 +6,8 @@ int lobby() { // Funcao que demonstra ao usuarios todas as opcoes que ele pode u
     printf("\n1 - Cadastrar nova tarefa\n");
     printf("2 - Listar tarefas ja criadas\n");
     printf("3 - Deletar uma terefa\n");
-    printf("4 - Fechar programa\n");
+    printf("6 - Filtrar tarefas por prioridade\n");
+    printf("0 - Fechar programa\n");
     printf("\nDigite o numero da opcao desejada: ");
 
     scanf("%d" , &opcao);
@@ -85,7 +86,7 @@ void listar_tarefas(Tarefas_armazem *lista) {
             printf("Tarefa - %d\n", i + 1);
             printf("Prioridade: %d\n", lista->tarefas[i].prioridade);
             printf("Categoria: %s", lista->tarefas[i].categoria);
-            printf("Descricao: %s\n", lista->tarefas[i].descricao);
+            printf("Descricao: %s", lista->tarefas[i].descricao);
             printf("Estado: %s\n" , lista->tarefas[i].Estado);
         }
         printf("====================\n");
@@ -129,5 +130,34 @@ Tarefas_armazem *deletarTarefa(Tarefas_armazem* lista) {
         lista_temp->Tamanho = lista->Tamanho - 1; // Subtraindo 1 ao valor atual da lista
         return lista_temp; // Retorna a nova lista com a tarefa que o usuario desejou excluida
     }
+}
+
+
+void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas){
+    int Prioridade_Escolha;
+    int Verifica_Prioridade = 0;
+
+    printf("\n====================\n");
+
+    printf("Digite a prioridade das tarefas que deseja que seja listado: ");
+    scanf("%d" , &Prioridade_Escolha);
+
+    for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
+
+        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Escolha){
+            printf("\nCategoria: %s", Lista_Tarefas->tarefas[i].categoria);
+            printf("Descricao: %s", Lista_Tarefas->tarefas[i].descricao);
+            printf("Estado: %s" , Lista_Tarefas->tarefas[i].Estado);
+
+            Verifica_Prioridade = 1;
+        }
+
+    }
+
+    if(Verifica_Prioridade == 0){
+        printf("\nNenhuma tarefa cadastrada com essa prioridade.\n");
+    }
+
+    printf("\n====================\n");
 }
 
