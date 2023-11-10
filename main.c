@@ -18,12 +18,9 @@ int main() {
             lista_tarefas = cadastrarTarefa(
                     lista_tarefas); // Chama a funcao para cadastrar uma tarefa
         } else if (opcao == 2) {
-            listar_tarefas(lista_tarefas); // Chama a funcao para mostrar na tela do
-            // usuario todas as tarefas
+            listar_tarefas(lista_tarefas); // Chama a funcao para mostrar na tela do usuario todas as tarefas
         } else if (opcao == 3) {
-            lista_tarefas =
-                    deletarTarefa(lista_tarefas); // Chama a funcao para listar todas as
-            // tarefas ja criadas pelo usuario
+            lista_tarefas = deletarTarefa(lista_tarefas); // Chama a funcao para listar todas as tarefas ja criadas pelo usuario
         } else if(opcao == 4) {
             escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
             break;
@@ -31,6 +28,8 @@ int main() {
             printf("Opcao Invalida, por favor digite novamente.\n");
         }
     }
+
+    escreve(lista_tarefas , "lista");
 
     return 0;
 }
