@@ -24,6 +24,8 @@ void listar_tarefas(Tarefas_armazem *lista);
 void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas);
 void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas);
 void Filtrar_Tarefas_Categoria(Tarefas_armazem* Lista_Tarefas);
+void Filtrar_Tarefas_CategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas);
 
+char* input_string(char* str , int max_caracteres);
 int Compara_Prioridades(const void *a , const void *b);
 void LoopDeLeitura();

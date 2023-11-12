@@ -27,9 +27,11 @@ int main() {
             Filtrar_Tarefas_Estado(lista_tarefas);
         }else if(opcao == 8){
             Filtrar_Tarefas_Categoria(lista_tarefas);
-        } else if(opcao == 0) {
-            escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
-            break;
+        }else if(opcao == 9) {
+            Filtrar_Tarefas_CategoriaEPrioridade(lista_tarefas);
+        }else if(opcao == 0) {
+                escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
+                break;
         }else{
             printf("Opcao Invalida, por favor digite uma opcao novamente.\n");
         }
