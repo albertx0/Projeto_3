@@ -188,6 +188,31 @@ void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas){
     printf("====================\n");
 }
 
+
+
+void Filtrar_Tarefas_Categoria(Tarefas_armazem* Lista_Tarefas){
+    LoopDeLeitura();
+
+    char Categoria_Filtro[20];
+    fgets(Categoria_Filtro , 20 , stdin);
+
+    Tarefas_armazem Lista_Tarefas_Temp = *Lista_Tarefas;
+
+    qsort(Lista_Tarefas_Temp.tarefas , Lista_Tarefas_Temp.Tamanho , sizeof(Tarefa) , Compara_Prioridades);
+
+    for(int i = 0 ; i < Lista_Tarefas_Temp.Tamanho ; i++){
+        if(strcmp(Lista_Tarefas_Temp.tarefas[i].categoria , Categoria_Filtro) == 0){
+            printf("\nPrioridade: %d\n" , Lista_Tarefas_Temp.tarefas[i].prioridade);
+            printf("Descricao: %s", Lista_Tarefas_Temp.tarefas[i].descricao);
+            printf("Estado: %s" , Lista_Tarefas_Temp.tarefas[i].Estado);
+        }
+    }
+}
+
+int Compara_Prioridades(const void *a , const void *b){
+    return ((Tarefa*)a)->prioridade - ((Tarefa*)b)->prioridade;
+}
+
 void LoopDeLeitura(){
     int c;
     while ((c = getchar()) != '\n' && c != EOF) { }

@@ -11,12 +11,6 @@ int main() {
 
     lista_tarefas = leitura("lista"); // Le o arquivo e coloca no lista todos as tarefas presentes no arquivo
 
-    if(strcmp(lista_tarefas->tarefas[0].categoria , "teste\n") == 0){
-        printf("foi\n");
-    }else{
-        printf("0\n");
-    }
-
     while (true) {
         opcao = lobby();
 
@@ -31,6 +25,8 @@ int main() {
             Filtrar_Tarefas_Prioridade(lista_tarefas);
         }else if(opcao == 7){
             Filtrar_Tarefas_Estado(lista_tarefas);
+        }else if(opcao == 8){
+            Filtrar_Tarefas_Categoria(lista_tarefas);
         } else if(opcao == 0) {
             escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
             break;
