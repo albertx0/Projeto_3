@@ -10,6 +10,7 @@ int lobby() { // Funcao que demonstra ao usuarios todas as opcoes que ele pode u
     printf("7 - Filtrar tarefas por estado.\n");
     printf("8 - Filtrar tarefas por categoria.\n");
     printf("9 - Filtar tarefas por categoria e prioridade.\n");
+    printf("10 - Exportar tarefas por prioridade.\n");
     printf("0 - Fechar programa.\n");
     printf("\nDigite o numero da opcao desejada: ");
 
@@ -229,6 +230,21 @@ void Filtrar_Tarefas_CategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas){
             printf("Categoria: %s\n", Lista_Tarefas->tarefas[i].categoria);
             printf("Descricao: %s\n", Lista_Tarefas->tarefas[i].descricao);
             printf("Estado: %s\n" , Lista_Tarefas->tarefas[i].Estado);
+        }
+    }
+}
+
+void Exportar_TarefasPorPrioridade(Tarefas_armazem* Lista_Tarefas){
+    int Prioridade_Filtro;
+    printf("Digite a prioridade das tarefas que deseja listar: ");
+    scanf("%d" , &Prioridade_Filtro);
+
+
+    FILE *arquivo_tarefas = fopen("TarefasExportadasPorPrioridade.txt" , "w");
+
+    for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
+        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){
+            fprintf(arquivo_tarefas , "Prioridade: %d | Categoria: %s | Estado: %s | Descricao: %s\n" , Lista_Tarefas->tarefas[i].prioridade , Lista_Tarefas->tarefas[i].categoria , Lista_Tarefas->tarefas[i].Estado , Lista_Tarefas->tarefas[i].descricao);
         }
     }
 }

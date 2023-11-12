@@ -29,6 +29,8 @@ int main() {
             Filtrar_Tarefas_Categoria(lista_tarefas);
         }else if(opcao == 9) {
             Filtrar_Tarefas_CategoriaEPrioridade(lista_tarefas);
+        }else if(opcao == 10){
+            Exportar_TarefasPorPrioridade(lista_tarefas);
         }else if(opcao == 0) {
                 escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
                 break;
