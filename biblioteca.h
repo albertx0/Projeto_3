@@ -22,3 +22,6 @@ Tarefas_armazem *cadastrarTarefa(Tarefas_armazem *lista);
 Tarefas_armazem *deletarTarefa(Tarefas_armazem *lista);
 void listar_tarefas(Tarefas_armazem *lista);
 void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas);
+void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas);
+
+void LoopDeLeitura();
