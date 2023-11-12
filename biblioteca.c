@@ -11,6 +11,7 @@ int lobby() { // Funcao que demonstra ao usuarios todas as opcoes que ele pode u
     printf("8 - Filtrar tarefas por categoria.\n");
     printf("9 - Filtar tarefas por categoria e prioridade.\n");
     printf("10 - Exportar tarefas por prioridade.\n");
+    printf("11 - Exportar tarefas por categoria.\n");
     printf("0 - Fechar programa.\n");
     printf("\nDigite o numero da opcao desejada: ");
 
@@ -242,9 +243,25 @@ void Exportar_TarefasPorPrioridade(Tarefas_armazem* Lista_Tarefas){
 
     FILE *arquivo_tarefas = fopen("TarefasExportadasPorPrioridade.txt" , "w");
 
-    for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
-        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){
-            fprintf(arquivo_tarefas , "Prioridade: %d | Categoria: %s | Estado: %s | Descricao: %s\n" , Lista_Tarefas->tarefas[i].prioridade , Lista_Tarefas->tarefas[i].categoria , Lista_Tarefas->tarefas[i].Estado , Lista_Tarefas->tarefas[i].descricao);
+
+}
+
+void Exportar_TarefasPorCategoria(Tarefas_armazem* Lista_Tarefas){
+    LoopDeLeitura();
+
+    char Categoria_Filtro[100];
+    printf("Escreva a categoria das tarefas que deseja exportar: ");
+    input_string(Categoria_Filtro , 100);
+
+    FILE *arquivo_tarefas = fopen("TarefasExportadasPorCategoria.txt" , "w");
+
+    Tarefas_armazem Lista_Tarefas_Temp = *Lista_Tarefas;
+
+    qsort(Lista_Tarefas_Temp.tarefas , Lista_Tarefas_Temp.Tamanho , sizeof(Tarefa) , Compara_Prioridades);
+
+    for(int i = 0 ; i < Lista_Tarefas_Temp.Tamanho ; i++){
+        if(strcmp(Lista_Tarefas_Temp.tarefas[i].categoria , Categoria_Filtro) == 0){
+            fprintf(arquivo_tarefas , "Prioridade: %d | Categoria: %s | Estado: %s | Descricao: %s\n" , Lista_Tarefas_Temp.tarefas[i].prioridade , Lista_Tarefas_Temp.tarefas[i].categoria , Lista_Tarefas_Temp.tarefas[i].Estado , Lista_Tarefas_Temp.tarefas[i].descricao);
         }
     }
 }
