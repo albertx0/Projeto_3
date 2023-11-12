@@ -6,13 +6,14 @@ int lobby() { // Funcao que demonstra ao usuarios todas as opcoes que ele pode u
     printf("\n1 - Cadastrar nova tarefa.\n");
     printf("2 - Listar tarefas ja criadas.\n");
     printf("3 - Deletar uma terefa.\n");
-    printf("6 - Filtrar tarefas por prioridade.\n");
-    printf("7 - Filtrar tarefas por estado.\n");
-    printf("8 - Filtrar tarefas por categoria.\n");
-    printf("9 - Filtar tarefas por categoria e prioridade.\n");
-    printf("10 - Exportar tarefas por prioridade.\n");
-    printf("11 - Exportar tarefas por categoria.\n");
-    printf("12 - Exportar tarefas por categoria e prioridade.\n");
+    printf("4 - Alterar tarefa.\n");
+    printf("5 - Filtrar tarefas por prioridade.\n");
+    printf("6 - Filtrar tarefas por estado.\n");
+    printf("7 - Filtrar tarefas por categoria.\n");
+    printf("8 - Filtar tarefas por categoria e prioridade.\n");
+    printf("9 - Exportar tarefas por prioridade.\n");
+    printf("10 - Exportar tarefas por categoria.\n");
+    printf("11 - Exportar tarefas por categoria e prioridade.\n");
     printf("0 - Fechar programa.\n");
     printf("\nDigite o numero da opcao desejada: ");
 
@@ -136,6 +137,60 @@ Tarefas_armazem *deletarTarefa(Tarefas_armazem* lista) {
         lista_temp->Tamanho = lista->Tamanho - 1; // Subtraindo 1 ao valor atual da lista
         return lista_temp; // Retorna a nova lista com a tarefa que o usuario desejou excluida
     }
+}
+
+Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas){
+    listar_tarefas(Lista_Tarefas);
+
+    int indice_alterar;
+    printf("Digite o indice da tarefa que deseja alterar: ");
+    scanf("%d" , &indice_alterar);
+
+    int Escolha_Alteracao = MenuAlteracao();
+
+    if(Escolha_Alteracao == 1){
+        int NovaPrioridade;
+
+        printf("Digite a nova prioridade de sua tarefa: ");
+        scanf("%d" , &NovaPrioridade);
+
+        Lista_Tarefas->tarefas[indice_alterar - 1].prioridade = NovaPrioridade;
+        printf("Alteracao feita com sucesso !\n");
+    }else if(Escolha_Alteracao == 2){
+        LoopDeLeitura();
+
+        char NovaCategoria[100];
+
+        printf("Escreva a nova categoria de sua tarefa: ");
+        input_string(NovaCategoria , 100);
+
+        strcpy(Lista_Tarefas->tarefas[indice_alterar - 1].categoria , NovaCategoria);
+        printf("Alteracao feita com sucesso !\n");
+    }else if(Escolha_Alteracao == 3){
+        LoopDeLeitura();
+
+        char NovoEstado[20];
+
+        printf("Escreva a nova descricao para sua tarefa: ");
+        input_string(NovoEstado , 20);
+
+        strcpy(Lista_Tarefas->tarefas[indice_alterar - 1].Estado , NovoEstado);
+        printf("Alteracao feita com sucesso !\n");
+    }else if(Escolha_Alteracao == 4){
+        LoopDeLeitura();
+
+        char NovaDescricao[300];
+
+        printf("Escreva a nova descricao para sua tarefa: ");
+        input_string(NovaDescricao , 300);
+
+        strcpy(Lista_Tarefas->tarefas[indice_alterar - 1].descricao , NovaDescricao);
+        printf("Alteracao feita com sucesso !\n");
+    } else if(Escolha_Alteracao == 5){
+        printf("Opcao cancelada pelo usuario.\n");
+    }
+
+    return Lista_Tarefas;
 }
 
 void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas){
@@ -292,15 +347,6 @@ void Exportar_TarefasPorCategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas){
     }
 }
 
-int Compara_Prioridades(const void *a , const void *b){
-    return ((Tarefa*)a)->prioridade - ((Tarefa*)b)->prioridade;
-}
-
-void LoopDeLeitura(){
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF) { }
-}
-
 char* input_string(char* str , int max_caracteres) {
     int c;
 
@@ -316,4 +362,33 @@ char* input_string(char* str , int max_caracteres) {
     }
 
     return str;
+}
+
+int MenuAlteracao(){
+    int Escolha_Alteracao;
+
+    while(true){
+        printf("1 - Para alterar a prioridade.\n");
+        printf("2 - Para alterar a categoria.\n");
+        printf("3 - Para alterar o estado.\n");
+        printf("4 - Para alterar a descricao.\n");
+        printf("5 - Para cancelar alteracao.\n");
+        printf("Digite a opcao que deseja: ");
+        scanf("%d" , &Escolha_Alteracao);
+
+        if(Escolha_Alteracao > 0 && Escolha_Alteracao < 6){
+            break;
+        }
+    }
+
+    return Escolha_Alteracao;
+}
+
+int Compara_Prioridades(const void *a , const void *b){
+    return ((Tarefa*)a)->prioridade - ((Tarefa*)b)->prioridade;
+}
+
+void LoopDeLeitura(){
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
 }

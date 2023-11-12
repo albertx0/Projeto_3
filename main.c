@@ -21,19 +21,21 @@ int main() {
             listar_tarefas(lista_tarefas); // Chama a funcao para mostrar na tela do usuario todas as tarefas
         } else if (opcao == 3) {
             lista_tarefas = deletarTarefa(lista_tarefas); // Chama a funcao para listar todas as tarefas ja criadas pelo usuario
-        }else if(opcao == 6){
+        }else if(opcao == 4){
+            lista_tarefas = AlterarTarefa(lista_tarefas);
+        }else if(opcao == 5){
             Filtrar_Tarefas_Prioridade(lista_tarefas);
-        }else if(opcao == 7){
+        }else if(opcao == 6){
             Filtrar_Tarefas_Estado(lista_tarefas);
-        }else if(opcao == 8){
+        }else if(opcao == 7){
             Filtrar_Tarefas_Categoria(lista_tarefas);
-        }else if(opcao == 9) {
+        }else if(opcao == 8) {
             Filtrar_Tarefas_CategoriaEPrioridade(lista_tarefas);
-        }else if(opcao == 10){
+        }else if(opcao == 9){
             Exportar_TarefasPorPrioridade(lista_tarefas);
-        }else if(opcao == 11){
+        }else if(opcao == 10){
             Exportar_TarefasPorCategoria(lista_tarefas);
-        }else if(opcao == 12){
+        }else if(opcao == 11){
             Exportar_TarefasPorCategoriaEPrioridade(lista_tarefas);
         }else if(opcao == 0) {
                 escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
