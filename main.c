@@ -11,6 +11,12 @@ int main() {
 
     lista_tarefas = leitura("lista"); // Le o arquivo e coloca no lista todos as tarefas presentes no arquivo
 
+    if(strcmp(lista_tarefas->tarefas[0].categoria , "teste\n") == 0){
+        printf("foi\n");
+    }else{
+        printf("0\n");
+    }
+
     while (true) {
         opcao = lobby();
 
@@ -20,11 +26,11 @@ int main() {
         } else if (opcao == 2) {
             listar_tarefas(lista_tarefas); // Chama a funcao para mostrar na tela do usuario todas as tarefas
         } else if (opcao == 3) {
-
-            lista_tarefas =
-                    deletarTarefa(lista_tarefas); // Chama a funcao para listar todas as tarefas ja criadas pelo usuario
+            lista_tarefas = deletarTarefa(lista_tarefas); // Chama a funcao para listar todas as tarefas ja criadas pelo usuario
         }else if(opcao == 6){
             Filtrar_Tarefas_Prioridade(lista_tarefas);
+        }else if(opcao == 7){
+            Filtrar_Tarefas_Estado(lista_tarefas);
         } else if(opcao == 0) {
             escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
             break;
