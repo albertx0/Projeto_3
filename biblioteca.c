@@ -142,13 +142,13 @@ Tarefas_armazem *deletarTarefa(Tarefas_armazem* lista) {
 Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas){
     listar_tarefas(Lista_Tarefas);
 
-    int indice_alterar;
+    int indice_alterar; //Indice que o usuario vai digitar para indicar qual tarefa deseja alterar
     printf("Digite o indice da tarefa que deseja alterar: ");
     scanf("%d" , &indice_alterar);
 
-    int Escolha_Alteracao = MenuAlteracao();
+    int Escolha_Alteracao = MenuAlteracao(); //Funcao que retora o indice de qual fator o usuario deseja alterar
 
-    if(Escolha_Alteracao == 1){
+    if(Escolha_Alteracao == 1){ //Se Escolha_Alteracao for igual a '1' o usuario optou pela troca da prioridade da tarefa
         int NovaPrioridade;
 
         printf("Digite a nova prioridade de sua tarefa: ");
@@ -156,7 +156,7 @@ Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas){
 
         Lista_Tarefas->tarefas[indice_alterar - 1].prioridade = NovaPrioridade;
         printf("Alteracao feita com sucesso !\n");
-    }else if(Escolha_Alteracao == 2){
+    }else if(Escolha_Alteracao == 2){ //Se Escolha_Alteracao for igual a '2' o usuario optou pela troca da categoria da tarefa
         LoopDeLeitura();
 
         char NovaCategoria[100];
@@ -166,7 +166,7 @@ Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas){
 
         strcpy(Lista_Tarefas->tarefas[indice_alterar - 1].categoria , NovaCategoria);
         printf("Alteracao feita com sucesso !\n");
-    }else if(Escolha_Alteracao == 3){
+    }else if(Escolha_Alteracao == 3){ //Se Escolha_Alteracao for igual a '3' o usuario optou pela troca da estado da tarefa
         LoopDeLeitura();
 
         char NovoEstado[20];
@@ -176,7 +176,7 @@ Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas){
 
         strcpy(Lista_Tarefas->tarefas[indice_alterar - 1].Estado , NovoEstado);
         printf("Alteracao feita com sucesso !\n");
-    }else if(Escolha_Alteracao == 4){
+    }else if(Escolha_Alteracao == 4){ //Se Escolha_Alteracao for igual a '4' o usuario optou pela troca da descricao da tarefa
         LoopDeLeitura();
 
         char NovaDescricao[300];
@@ -186,7 +186,7 @@ Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas){
 
         strcpy(Lista_Tarefas->tarefas[indice_alterar - 1].descricao , NovaDescricao);
         printf("Alteracao feita com sucesso !\n");
-    } else if(Escolha_Alteracao == 5){
+    } else if(Escolha_Alteracao == 5){ //Se Escolha_Alteracao for igual a '5' o usuario optou for finalizar a operacao
         printf("Opcao cancelada pelo usuario.\n");
     }
 
@@ -204,7 +204,7 @@ void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas){
 
     for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
 
-        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){
+        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){ // Imprime as tarefas caso a prioridade delas seja igual a prioridade escolhida pelo usuario
             printf("\nPrioridade: %d\n", Lista_Tarefas->tarefas[i].prioridade);
             printf("Categoria: %s\n", Lista_Tarefas->tarefas[i].categoria);
             printf("Descricao: %s\n", Lista_Tarefas->tarefas[i].descricao);
@@ -215,7 +215,7 @@ void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas){
 
     }
 
-    if(Verifica_Prioridade == 0){
+    if(Verifica_Prioridade == 0){ // Caso o Verifica_Prioridade seja igual a '0' significa que em nenhum momento entrou no if de prioridade e retorna ao usuario que nenhuma tarefa com a prioridade desejada foi encontrada
         printf("Nenhuma tarefa cadastrada com essa prioridade.\n");
     }
 
@@ -226,7 +226,7 @@ void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas){
     LoopDeLeitura();
 
     char Estado_Filtro[20];
-    printf("Escreva o estado das tarefas que deseja visualizar: ");
+    printf("Escreva o estado das tarefas que deseja visualizar: "); //Entrada do estado das tarefas que o usuario deseja listar
     input_string(Estado_Filtro , 20);
 
     int Verifica_Estado = 0;
@@ -234,7 +234,7 @@ void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas){
     printf("\n====================\n");
     for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
 
-        if(strcmp(Lista_Tarefas->tarefas[i].Estado , Estado_Filtro) == 0){
+        if(strcmp(Lista_Tarefas->tarefas[i].Estado , Estado_Filtro) == 0){ // Imprime as tarefas caso o estado delas seja igual ao escrito pelo usuario
             printf("\nPrioridade: %d\n", Lista_Tarefas->tarefas[i].prioridade);
             printf("Categoria: %s\n", Lista_Tarefas->tarefas[i].categoria);
             printf("Descricao: %s\n", Lista_Tarefas->tarefas[i].descricao);
@@ -253,15 +253,15 @@ void Filtrar_Tarefas_Categoria(Tarefas_armazem* Lista_Tarefas){
     LoopDeLeitura();
 
     char Categoria_Filtro[100];
-    printf("Escreva a categoria das tarefas que deseja listar: ");
+    printf("Escreva a categoria das tarefas que deseja listar: "); // Recebe a categoria das tarefas que o usuario deseja que liste
     input_string(Categoria_Filtro , 100);
 
-    Tarefas_armazem Lista_Tarefas_Temp = *Lista_Tarefas;
+    Tarefas_armazem Lista_Tarefas_Temp = *Lista_Tarefas; // Criacao de um array temporario para que a funcao "qsort" nao altere o array principal
 
-    qsort(Lista_Tarefas_Temp.tarefas , Lista_Tarefas_Temp.Tamanho , sizeof(Tarefa) , Compara_Prioridades);
+    qsort(Lista_Tarefas_Temp.tarefas , Lista_Tarefas_Temp.Tamanho , sizeof(Tarefa) , Compara_Prioridades); // Funcao para ordenar o array de acordo com a prioridade
 
     for(int i = 0 ; i < Lista_Tarefas_Temp.Tamanho ; i++){
-        if(strcmp(Lista_Tarefas_Temp.tarefas[i].categoria , Categoria_Filtro) == 0){
+        if(strcmp(Lista_Tarefas_Temp.tarefas[i].categoria , Categoria_Filtro) == 0){ // Imprime as tarefas do array caso a categoria corresponda com a escrita pelo cliente
             printf("\nPrioridade: %d\n", Lista_Tarefas->tarefas[i].prioridade);
             printf("Categoria: %s\n", Lista_Tarefas->tarefas[i].categoria);
             printf("Descricao: %s\n", Lista_Tarefas->tarefas[i].descricao);
@@ -272,17 +272,17 @@ void Filtrar_Tarefas_Categoria(Tarefas_armazem* Lista_Tarefas){
 
 void Filtrar_Tarefas_CategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas){
     int Prioridade_Filtro;
-    printf("Digite a prioridade das tarefas que deseja listar: ");
+    printf("Digite a prioridade das tarefas que deseja listar: "); // Recebe a prioridade das tarefas que deseja imprimir
     scanf("%d" , &Prioridade_Filtro);
 
     LoopDeLeitura();
 
     char Categoria_Filtro[100];
-    printf("Escreva a categoria das tarefas que deseja listar: ");
+    printf("Escreva a categoria das tarefas que deseja listar: "); // Recebe a categoria das tarefas que deseja imprimir
     input_string(Categoria_Filtro , 100);
 
     for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
-        if(strcmp(Lista_Tarefas->tarefas[i].categoria , Categoria_Filtro) == 0 && Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){
+        if(strcmp(Lista_Tarefas->tarefas[i].categoria , Categoria_Filtro) == 0 && Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){ // Caso a categoria e prioridade das tarefas correponda com as informadas pelo usuario, elas sao impressas
             printf("\nPrioridade: %d\n", Lista_Tarefas->tarefas[i].prioridade);
             printf("Categoria: %s\n", Lista_Tarefas->tarefas[i].categoria);
             printf("Descricao: %s\n", Lista_Tarefas->tarefas[i].descricao);
@@ -293,14 +293,14 @@ void Filtrar_Tarefas_CategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas){
 
 void Exportar_TarefasPorPrioridade(Tarefas_armazem* Lista_Tarefas){
     int Prioridade_Filtro;
-    printf("Digite a prioridade das tarefas que deseja listar: ");
+    printf("Digite a prioridade das tarefas que deseja listar: "); // Recebe a prioridade das tarefas que deseja exportar
     scanf("%d" , &Prioridade_Filtro);
 
 
     FILE *arquivo_tarefas = fopen("TarefasExportadasPorPrioridade.txt" , "w");
 
     for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
-        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){
+        if(Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){ // Imprime no arquivo caso a prioridade seja igual a digitada pelo usuario
             fprintf(arquivo_tarefas , "Prioridade: %d | Categoria: %s | Estado: %s | Descricao: %s\n" , Lista_Tarefas->tarefas[i].prioridade , Lista_Tarefas->tarefas[i].categoria , Lista_Tarefas->tarefas[i].Estado , Lista_Tarefas->tarefas[i].descricao);
         }
     }
@@ -310,17 +310,17 @@ void Exportar_TarefasPorCategoria(Tarefas_armazem* Lista_Tarefas){
     LoopDeLeitura();
 
     char Categoria_Filtro[100];
-    printf("Escreva a categoria das tarefas que deseja exportar: ");
+    printf("Escreva a categoria das tarefas que deseja exportar: "); // Recebe a categoria das tarefas que deseja exportar
     input_string(Categoria_Filtro , 100);
 
     FILE *arquivo_tarefas = fopen("TarefasExportadasPorCategoria.txt" , "w");
 
-    Tarefas_armazem Lista_Tarefas_Temp = *Lista_Tarefas;
+    Tarefas_armazem Lista_Tarefas_Temp = *Lista_Tarefas; // Criacao de lista temporaria para a funcao "qsort" nao afetar a original
 
-    qsort(Lista_Tarefas_Temp.tarefas , Lista_Tarefas_Temp.Tamanho , sizeof(Tarefa) , Compara_Prioridades);
+    qsort(Lista_Tarefas_Temp.tarefas , Lista_Tarefas_Temp.Tamanho , sizeof(Tarefa) , Compara_Prioridades); // Funcao para ordenar as tarefas de acordo com a prioridade
 
     for(int i = 0 ; i < Lista_Tarefas_Temp.Tamanho ; i++){
-        if(strcmp(Lista_Tarefas_Temp.tarefas[i].categoria , Categoria_Filtro) == 0){
+        if(strcmp(Lista_Tarefas_Temp.tarefas[i].categoria , Categoria_Filtro) == 0){ // Caso a categoria da tarefa correponda com a informada pelo usuario, a tarefa eh impressa no arquivo
             fprintf(arquivo_tarefas , "Prioridade: %d | Categoria: %s | Estado: %s | Descricao: %s\n" , Lista_Tarefas_Temp.tarefas[i].prioridade , Lista_Tarefas_Temp.tarefas[i].categoria , Lista_Tarefas_Temp.tarefas[i].Estado , Lista_Tarefas_Temp.tarefas[i].descricao);
         }
     }
@@ -329,42 +329,42 @@ void Exportar_TarefasPorCategoria(Tarefas_armazem* Lista_Tarefas){
 void Exportar_TarefasPorCategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas){
 
     int Prioridade_Filtro;
-    printf("Digite a prioridade das tarefas que deseja listar: ");
+    printf("Digite a prioridade das tarefas que deseja listar: "); // Recebe a prioridade das tarefas que deseja imprimir no arquivo
     scanf("%d" , &Prioridade_Filtro);
 
     LoopDeLeitura();
 
     char Categoria_Filtro[100];
-    printf("Escreva a categoria das tarefas que deseja exportar: ");
+    printf("Escreva a categoria das tarefas que deseja exportar: "); // Recebe a categoria das tarefas que deseja imprimir no arquivo
     input_string(Categoria_Filtro , 100);
 
     FILE *arquivo_tarefas = fopen("TarefasExportadasPorCategoriaEPrioridade.txt" , "w");
 
     for(int i = 0 ; i < Lista_Tarefas->Tamanho ; i++){
-        if(strcmp(Lista_Tarefas->tarefas[i].categoria , Categoria_Filtro) == 0 && Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){
+        if(strcmp(Lista_Tarefas->tarefas[i].categoria , Categoria_Filtro) == 0 && Lista_Tarefas->tarefas[i].prioridade == Prioridade_Filtro){ // Caso a categoria e prioridade da tarefa correponda com a informada pelo usuario, a tarefa eh impressa no arquivo
             fprintf(arquivo_tarefas , "Prioridade: %d | Categoria: %s | Estado: %s | Descricao: %s\n" , Lista_Tarefas->tarefas[i].prioridade , Lista_Tarefas->tarefas[i].categoria , Lista_Tarefas->tarefas[i].Estado , Lista_Tarefas->tarefas[i].descricao);
         }
     }
 }
 
-char* input_string(char* str , int max_caracteres) {
+char* input_string(char* str , int max_caracteres) { // Funcao para simular o input do python
     int c;
 
-    fgets(str, max_caracteres, stdin); // Recebe o array de chars/string
+    fgets(str, max_caracteres, stdin); // Recebe o array de string
 
-    // Remover o caractere de nova linha ('\n') do final da string
+
     size_t comprimento = strlen(str);
-    if (comprimento > 0 && str[comprimento - 1] == '\n') {
+    if (comprimento > 0 && str[comprimento - 1] == '\n') { // Remover o caractere de nova linha '\n' do final da string
         str[comprimento - 1] = '\0';
     } else {
-        // Limpar o buffer de entrada restante se necessário
-        while ((c = getchar()) != '\n' && c != EOF);
+
+        while ((c = getchar()) != '\n' && c != EOF); // Limpar o buffer de entrada restante se necessário
     }
 
     return str;
 }
 
-int MenuAlteracao(){
+int MenuAlteracao(){ // Funcao para imprimir o menu no terminal do usuario e retornar a opcao escolhida pelo mesmo
     int Escolha_Alteracao;
 
     while(true){
@@ -384,11 +384,11 @@ int MenuAlteracao(){
     return Escolha_Alteracao;
 }
 
-int Compara_Prioridades(const void *a , const void *b){
-    return ((Tarefa*)a)->prioridade - ((Tarefa*)b)->prioridade;
+int Compara_Prioridades(const void *a , const void *b){ // Funcao utilizada pela funcao "qsort" para ordenar as tarefas do maior pára o menor
+    return ((Tarefa*)b)->prioridade - ((Tarefa*)a)->prioridade;
 }
 
-void LoopDeLeitura(){
+void LoopDeLeitura(){ // Funcao para limpar buffers restantes
     int c;
     while ((c = getchar()) != '\n' && c != EOF) { }
 }
