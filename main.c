@@ -33,6 +33,8 @@ int main() {
             Exportar_TarefasPorPrioridade(lista_tarefas);
         }else if(opcao == 11){
             Exportar_TarefasPorCategoria(lista_tarefas);
+        }else if(opcao == 12){
+            Exportar_TarefasPorCategoriaEPrioridade(lista_tarefas);
         }else if(opcao == 0) {
                 escreve(lista_tarefas,"lista"); // Fecha o programa e salva a lista no arquivo
                 break;
