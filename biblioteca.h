@@ -23,5 +23,7 @@ Tarefas_armazem *deletarTarefa(Tarefas_armazem *lista);
 void listar_tarefas(Tarefas_armazem *lista);
 void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas);
 void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas);
+void Filtrar_Tarefas_Categoria(Tarefas_armazem* Lista_Tarefas);
 
+int Compara_Prioridades(const void *a , const void *b);
 void LoopDeLeitura();
