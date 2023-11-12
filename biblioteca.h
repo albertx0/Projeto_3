@@ -20,6 +20,7 @@ Tarefas_armazem *leitura(char *nome);
 void escreve(Tarefas_armazem *v, char *nome);
 Tarefas_armazem *cadastrarTarefa(Tarefas_armazem *lista);
 Tarefas_armazem *deletarTarefa(Tarefas_armazem *lista);
+Tarefas_armazem* AlterarTarefa(Tarefas_armazem* Lista_Tarefas);
 void listar_tarefas(Tarefas_armazem *lista);
 void Filtrar_Tarefas_Prioridade(Tarefas_armazem* Lista_Tarefas);
 void Filtrar_Tarefas_Estado(Tarefas_armazem* Lista_Tarefas);
@@ -30,5 +31,6 @@ void Exportar_TarefasPorCategoria(Tarefas_armazem* Lista_Tarefas);
 void Exportar_TarefasPorCategoriaEPrioridade(Tarefas_armazem* Lista_Tarefas);
 
 char* input_string(char* str , int max_caracteres);
+int MenuAlteracao();
 int Compara_Prioridades(const void *a , const void *b);
 void LoopDeLeitura();
