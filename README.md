@@ -1,4 +1,4 @@
-Projeto_3 - Lista de tarefas
+#Projeto_3 - Lista de tarefas
 
 Projeto realizado por Gabriel Albertini Pinheiro durante o 2º Semestre de Ciência da Computação, com o auxílio do Prof. Leonardo Anjoletto Ferreira. O projeto tem como proposta a realização de uma lista de tarefas para permitir aos usuários cadastrar tarefas, definindo para elas suas prioridades, descrições, estado atual e categoria. Além disso, após salvar, o programa disponibiliza ao usuário opções para o cadastro de novas tarefas, listagem de tarefas (podendo aplicar filtros ou não), apagar tarefas e exportar tarefas para um arquivo de texto (aplicando filtros ou não).
 
